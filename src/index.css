@@ -13,3 +13,39 @@ body {
 #root {
   height: 100%;
 }
+
+@media (prefers-reduced-motion) {
+  .logo path {
+    animation: none !important;
+    stroke-dasharray: unset !important;
+  }
+}
+
+@keyframes grow {
+  0% {
+    stroke-dashoffset: 1px;
+    stroke-dasharray: 0 600px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  40% {
+    stroke-dasharray: 600px 0;
+  }
+  85% {
+    stroke-dasharray: 600px 0;
+  }
+  95%,
+  to {
+    stroke-dasharray: 0 600px;
+  }
+}
+
+.logo path {
+  stroke-dashoffset: 1px;
+  stroke-dasharray: 600px 0;
+  animation: grow 15s ease forwards infinite;
+  transform-origin: center;
+  animation-delay: 0s;
+}
