@@ -19,7 +19,7 @@ const menuList = [
   },
 ]
 
-const NavBar = () => {
+const NavBar = ({ className }) => {
   const [isDark, setIsDark] = useState(
     JSON.parse(
       localStorage.getItem('isDark')
@@ -37,7 +37,7 @@ const NavBar = () => {
   }, [isDark])
 
   return (
-    <div className='p-2 w-full absolute opacity-90'>
+    <div className={`p-2 w-full opacity-90 ${className}`}>
       <div className='navbar bg-base-100 shadow-xl w-auto rounded-box'>
         <div className='flex-1 space-x-1'>
           <details className='flex-none sm:hidden dropdown'>
