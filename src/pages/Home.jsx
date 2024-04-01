@@ -3,7 +3,8 @@ import Typed from 'typed.js'
 import axios from 'axios'
 
 const Home = () => {
-  const el = useRef(null)
+  const motto = useRef(null)
+  const introduction = useRef(null)
 
   useEffect(() => {
     axios
@@ -11,16 +12,28 @@ const Home = () => {
       .then((response) => {
         console.log(response.data.cn)
         const data = response.data.en
-        const options = {
+        const mottoOptions = {
           strings: [data],
           typeSpeed: 50,
           loop: true,
           showCursor: false,
           backDelay: 1000,
         }
-        const typed = new Typed(el.current, options)
+        const introductionOptions = {
+          strings: ['Who am I?'],
+          typeSpeed: 50,
+          // loop: true,
+          showCursor: false,
+          backDelay: 1000,
+        }
+        const mottoTyped = new Typed(motto.current, mottoOptions)
+        const introductionTyped = new Typed(
+          introduction.current,
+          introductionOptions
+        )
         return () => {
-          typed.destroy()
+          mottoTyped.destroy()
+          introductionTyped.destroy()
         }
       })
       .catch((error) => {
@@ -28,12 +41,21 @@ const Home = () => {
       })
   }, [])
   return (
-    <div className='flex items-center h-full justify-center'>
-      <span
-        className='mx-10 sm:mx-32 text-3xl text-start break-all max-w-full'
-        ref={el}
-      />
-    </div>
+    <>
+      <div className='flex items-center h-full justify-center'>
+        <span
+          className='mx-10 sm:mx-32 text-3xl text-start break-all max-w-full'
+          ref={motto}
+        />
+      </div>
+      <div className='flex items-center h-full justify-center'>
+        <div className='mockup-code'>
+          <pre data-prefix='$'>
+            <code ref={introduction} />
+          </pre>
+        </div>
+      </div>
+    </>
   )
 }
 
