@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function App() {
   return (
     <>
-      <NavBar className='fixed '/>
+      <NavBar className='fixed' />
       <Outlet />
     </>
   )
