@@ -54,7 +54,6 @@ const Home = () => {
         ],
       },
     })
-    // window.getComputedStyle(mockupCode.current).
     axios
       .get('https://api.mu-jie.cc/stray-birds/range')
       .then((response) => {
